@@ -1,1 +1,25 @@
 /* В этом файле будут храниться все значения переменных в исходном состоянии, а так же их изменения в зависимости от ширины устройства */
+
+:root {
+	--inter-font: 'Inter';
+	--ps2p-font: 'PressStart2P';
+	--heading-card-text-width: 785;
+	--card-text-width: 400;
+	--card-headers-width: 785;
+	--background-color: #fff;
+	--text-color: #000;
+	--stroke-color: #fff;
+	--border-color: #000;
+	--background-modal-color: #000;
+
+	--icon-stroke-color: #000;
+	--icon-fill-color: #ff0000;
+
+	--main-background-color: repeating-linear-gradient(
+			#d3d3d3,
+			#d3d3d3 2px,
+			transparent 2px 4px
+		),
+		repeating-linear-gradient(90deg, #d3d3d3, #d3d3d3 2px, transparent 2px 4px),
+		linear-gradient(#e7e7e7, #1a1a1a);
+}
