@@ -540,18 +540,15 @@
 					</div>
 				</div>
 			</div>
-			<button
-				type="button"
-				aria-controls="save__modal"
-				class="button__save button"
-				onclick="window['save__modal'].showModal(); return false;"
-			>
+			
+			<button type="button" aria-controls="save__modal" class="button__save button">
 				<svg class="floppy__icon" viewBox="0 0 39 39">
 					<use href="./svg/floppy.svg#floppy" />
 				</svg>
 				<span class="button__text">Сохранить на память</span>
 			</button>
 		</main>
+		
 		<dialog class="save__modal" id="save__modal">
 			<div class="content__modal">
 				<div class="floppy__icon__wrapper">
@@ -561,15 +558,76 @@
 				</div>
 				<span class="modal__text">Вставьте дискету, чтобы продолжить</span>
 			</div>
-
-			<button
-				type="button"
-				class="button__OK button"
-				onclick="window['save__modal'].close(); return false;"
-			>
+			<button type="button" class="button__OK button">
 				<span class="button__text">OK</span>
 			</button>
 		</dialog>
-		<script src="./scripts/like.js"></script>
+		
+		<script>
+			// Ждем полной загрузки страницы
+			window.addEventListener('load', function() {
+			  
+			  // Находим все нужные элементы
+			  const likeHearts = document.querySelectorAll('.like-icon');
+			  const likeButtons = document.querySelectorAll('.card__like-button');
+			  const iconButtons = document.querySelectorAll('.card__icon-button');
+			  const saveBtn = document.querySelector('.button__save');
+			  const okBtn = document.querySelector('.button__OK');
+			  const modal = document.getElementById('save__modal');
+			  
+			  // Функция обновления текста кнопки
+			  function updateButtonText(heart, btn) {
+				const textSpan = btn.querySelector('.button__text');
+				if (!textSpan) return;
+				textSpan.textContent = heart.classList.contains('is-liked') ? 'Unlike' : 'Like';
+			  }
+			  
+			  // Обработчики для иконок сердца
+			  iconButtons.forEach((iconBtn, idx) => {
+				iconBtn.addEventListener('click', function(e) {
+				  e.preventDefault();
+				  if (likeHearts[idx]) {
+					likeHearts[idx].classList.toggle('is-liked');
+					if (likeButtons[idx]) {
+					  updateButtonText(likeHearts[idx], likeButtons[idx]);
+					}
+				  }
+				});
+			  });
+			  
+			  // Обработчики для кнопок Like
+			  likeButtons.forEach((btn, idx) => {
+				btn.addEventListener('click', function(e) {
+				  e.preventDefault();
+				  if (likeHearts[idx]) {
+					likeHearts[idx].classList.toggle('is-liked');
+					updateButtonText(likeHearts[idx], btn);
+				  }
+				});
+			  });
+			  
+			  // Обработчик для кнопки "Сохранить на память"
+			  if (saveBtn && modal) {
+				saveBtn.addEventListener('click', function(e) {
+				  e.preventDefault();
+				  modal.showModal();
+				});
+			  }
+			  
+			  // Обработчик для кнопки "OK" в модальном окне
+			  if (okBtn && modal) {
+				okBtn.addEventListener('click', function(e) {
+				  e.preventDefault();
+				  modal.close();
+				});
+			  }
+			  
+			  // Предотвращаем отправку любых форм
+			  document.addEventListener('submit', function(e) {
+				e.preventDefault();
+			  });
+			  
+			});
+		</script>
 	</body>
 </html>
