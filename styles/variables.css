@@ -1,25 +1,45 @@
 /* В этом файле будут храниться все значения переменных в исходном состоянии, а так же их изменения в зависимости от ширины устройства */
 
 :root {
-	--inter-font: 'Inter';
-	--ps2p-font: 'PressStart2P';
-	--heading-card-text-width: 785;
-	--card-text-width: 400;
-	--card-headers-width: 785;
-	--background-color: #fff;
-	--text-color: #000;
-	--stroke-color: #fff;
-	--border-color: #000;
-	--background-modal-color: #000;
+  --font-primary: "Inter-Variable";
+  --font-accent: "PressStart2P";
 
-	--icon-stroke-color: #000;
-	--icon-fill-color: #ff0000;
+  --font-weight-card-topic: 700;
+  --font-weight-card-text: 400;
 
-	--main-background-color: repeating-linear-gradient(
-			#d3d3d3,
-			#d3d3d3 2px,
-			transparent 2px 4px
-		),
-		repeating-linear-gradient(90deg, #d3d3d3, #d3d3d3 2px, transparent 2px 4px),
-		linear-gradient(#e7e7e7, #1a1a1a);
+  --color-primary: #fff;
+  --color-accent: #000;
+
+  --border-color: #000;
+
+  --title-font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
+
+  --container-width: clamp(23.4375rem, 16.2852rem + 30.5164svi, 43.75rem);
+
+  --background-image: repeating-linear-gradient(
+      to right,
+      #d3d3d3 0 2px,
+      transparent 2px 4px
+    ),
+    repeating-linear-gradient(to bottom, #d3d3d3 0 2px, transparent 2px 4px),
+    linear-gradient(to bottom, #e7e7e7 0.01%, #1a1a1a);
+
+  --button-border-color: #000;
+  --label-border-color: #fff;
+  --bg-color: #fff;
+  --backdrop-color: rgb(0 0 0 / 0.75);
+
+  --heart-contour-color: #000;
+  --heart-core-color: #fff;
+  --heart-main-body-color: #ff0000;
+  --heart-sparks-color: #ff0000;
+  --heart-fill-color: #ff0000;
+}
+
+@media (width <= 375px) {
+  :root {
+    --title-font-size: clamp(2.625rem, 0.0795rem + 12.7273vw, 3.0625rem);
+
+    --container-width: 100%;
+  }
 }
